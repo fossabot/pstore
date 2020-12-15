@@ -38,7 +38,7 @@ jobs:
       - name: Configure CMake
         shell: bash
         working-directory: ${{ runner.workspace }}/build
-        run: cmake $GITHUB_WORKSPACE -G "${{ matrix.generator }}" -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} ${{cxx_compiler}}
+        run: cmake $GITHUB_WORKSPACE -G "${{ matrix.generator }}" -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} ${{ matrix.cxx_compiler }}
 
       - name: Build
         working-directory: ${{ runner.workspace }}/build
