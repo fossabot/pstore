@@ -21,8 +21,8 @@ jobs:
           build_type: Release
           generator: Xcode
 
-    name: ${{ matrix.config.name }}
-    runs-on: ${{ matrix.config.os }}
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
 
     steps:
       - uses: actions/checkout@v2
