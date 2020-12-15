@@ -9,7 +9,7 @@ jobs:
             os          : windows-latest
             build_type  : Release
             generator   : Visual Studio 16 2019
-            cxx_compiler:
+            cxx_compiler: ''
             
           - name        : Ubuntu-latest/GCC-10
             os          : ubuntu-latest
@@ -21,7 +21,7 @@ jobs:
             os        : macos-latest
             build_type: Release
             generator : Xcode
-            cxx_compiler:
+            cxx_compiler: ''
 
     name: ${{ matrix.name }}
     runs-on: ${{ matrix.os }}
