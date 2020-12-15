@@ -1,5 +1,6 @@
 <img alt="pstore logo" src="doc_sources/logo.svg" height="80" width="150">
 
+![CI Build/Test](https://github.com/paulhuggett/pstore/workflows/CI%20Build/Test/badge.svg)
 [![Build Status](https://travis-ci.org/SNSystems/pstore.svg?branch=master)](https://travis-ci.org/SNSystems/pstore)
 [![Coverity Scan Build Status](https://scan.coverity.com/projects/15170/badge.svg)](https://scan.coverity.com/projects/snsystems-pstore)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=SNSystems_pstore&metric=alert_status)](https://sonarcloud.io/dashboard?id=SNSystems_pstore)
