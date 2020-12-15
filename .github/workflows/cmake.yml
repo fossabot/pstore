@@ -1,24 +1,24 @@
-name: CMake
-
-on: [push]
-
+name: CI Build/Test
+on: [ push ]
 jobs:
   build:
     strategy:
       matrix:
         include:
-        - name: Windows Latest MSVC
-          os: windows-latest
-          build_type: Release
-          generator: Visual Studio 16 2019
-        - name: Ubuntu Latest GCC
-          os: ubuntu-latest
-          build_type: Release
-          generator: Unix Makefiles
-        - name: macOS Latest Xcode
-          os: macos-latest
-          build_type: Release
-          generator: Xcode
+          - name      : Windows Latest MSVC
+            os        : windows-latest
+            build_type: Release
+            generator : Visual Studio 16 2019
+
+          - name      : Ubuntu Latest GCC
+            os        : ubuntu-latest
+            build_type: Release
+            generator : Unix Makefiles
+
+          - name      : macOS Latest Xcode
+            os        : macos-latest
+            build_type: Release
+            generator : Xcode
 
     name: ${{ matrix.name }}
     runs-on: ${{ matrix.os }}
@@ -30,25 +30,19 @@ jobs:
           node-version: 12
 
       - name: Create Build Environment
-        # Some projects don't allow in-source building, so create a separate build directory
-        # We'll use this as our working directory for all subsequent commands
-        run: cmake -E make_directory ${{runner.workspace}}/build
+        run: cmake -E make_directory ${{ runner.workspace }}/build
 
       - name: Configure CMake
-        # Use a bash shell so we can use the same syntax for environment variable
-        # access regardless of the host operating system
         shell: bash
-        working-directory: ${{runner.workspace}}/build
-        run: cmake $GITHUB_WORKSPACE -G "${{matrix.generator}}" -DCMAKE_BUILD_TYPE=${{matrix.build_type}}
+        working-directory: ${{ runner.workspace }}/build
+        run: cmake $GITHUB_WORKSPACE -G "${{ matrix.generator }}" -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
 
       - name: Build
-        working-directory: ${{runner.workspace}}/build
+        working-directory: ${{ runner.workspace }}/build
         shell: bash
-        # Execute the build.  You can specify a specific target with "--target <NAME>"
-        run: cmake --build . --config ${{matrix.build_type}}
+        run: cmake --build . --config ${{ matrix.build_type }}
 
       - name: System Tests
-        working-directory: ${{runner.workspace}}/build
+        working-directory: ${{ runner.workspace }}/build
         shell: bash
-        # Execute tests defined by the CMake configuration.  
-        run: cmake --build . --config ${{matrix.build_type}} --target pstore-system-tests
+        run: cmake --build . --config ${{ matrix.build_type }} --target pstore-system-tests
