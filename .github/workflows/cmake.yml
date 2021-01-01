@@ -15,9 +15,15 @@ jobs:
             os          : windows-latest
             build_type  : Release
             generator   : Visual Studio 16 2019
-            cxx_compiler: ''
 
-          - name        : Ubuntu-latest/gcc-10
+          - name        : Ubuntu-latest/gcc-10/Debug
+            os          : ubuntu-latest
+            build_type  : Debug
+            generator   : Unix Makefiles
+            cxx_compiler: -DCMAKE_CXX_COMPILER=g++-10 -DCMAKE_C_COMPILER=gcc-10
+            options     : '-DPSTORE_ALWAYS_SPANNING=Yes'
+
+          - name        : Ubuntu-latest/gcc-10/Release
             os          : ubuntu-latest
             build_type  : Release
             generator   : Unix Makefiles
@@ -29,11 +35,17 @@ jobs:
             generator   : Unix Makefiles
             cxx_compiler: -DCMAKE_CXX_COMPILER=g++-7 -DCMAKE_C_COMPILER=gcc-7
 
-          - name      : macOS Latest Xcode
+          - name      : macOS-latest/Xcode/Debug
+            os        : macos-latest
+            build_type: Debug
+            generator : Xcode
+            options   : '-DPSTORE_ALWAYS_SPANNING=Yes'
+
+          - name      : macOS-latest/Xcode/Release
             os        : macos-latest
             build_type: Release
             generator : Xcode
-            cxx_compiler: ''
+
 
     name: ${{ matrix.name }}
     runs-on: ${{ matrix.os }}
