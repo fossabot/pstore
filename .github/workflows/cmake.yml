@@ -5,12 +5,18 @@ jobs:
     strategy:
       matrix:
         include:
-          - name        : Windows Latest MSVC
+          - name        : Windows-latest/MSVC
+            os          : windows-latest
+            build_type  : Debug
+            generator   : Visual Studio 16 2019
+            options     : '-DPSTORE_SPANNING=Yes'
+
+          - name        : Windows-latest/MSVC/Release
             os          : windows-latest
             build_type  : Release
             generator   : Visual Studio 16 2019
             cxx_compiler: ''
-            
+
           - name        : Ubuntu-latest/gcc-10
             os          : ubuntu-latest
             build_type  : Release
@@ -44,7 +50,7 @@ jobs:
       - name: Configure CMake
         shell: bash
         working-directory: ${{ runner.workspace }}/build
-        run: cmake $GITHUB_WORKSPACE -G "${{ matrix.generator }}" -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} ${{ matrix.cxx_compiler }}
+        run: cmake $GITHUB_WORKSPACE -G "${{ matrix.generator }}" -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} ${{ matrix.cxx_compiler }} ${{ matrix.options }} -D PSTORE_EXAMPLES=Yes
 
       - name: Build
         working-directory: ${{ runner.workspace }}/build
