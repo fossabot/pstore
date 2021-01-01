@@ -29,7 +29,14 @@ jobs:
             generator   : Unix Makefiles
             cxx_compiler: -DCMAKE_CXX_COMPILER=g++-10 -DCMAKE_C_COMPILER=gcc-10
 
-          - name        : Ubuntu-latest/gcc-7.5
+          - name        : Ubuntu-latest/gcc-7.5/Debug
+            os          : ubuntu-latest
+            build_type  : Debug
+            generator   : Unix Makefiles
+            cxx_compiler: -DCMAKE_CXX_COMPILER=g++-7 -DCMAKE_C_COMPILER=gcc-7
+            options     : '-DPSTORE_ALWAYS_SPANNING=Yes'
+
+          - name        : Ubuntu-latest/gcc-7.5/Release
             os          : ubuntu-latest
             build_type  : Release
             generator   : Unix Makefiles
