@@ -5,11 +5,11 @@ jobs:
     strategy:
       matrix:
         include:
-          - name        : Windows-latest/MSVC
+          - name        : Windows-latest/MSVC/Debug
             os          : windows-latest
             build_type  : Debug
             generator   : Visual Studio 16 2019
-            options     : '-DPSTORE_SPANNING=Yes'
+            options     : '-DPSTORE_ALWAYS_SPANNING=Yes'
 
           - name        : Windows-latest/MSVC/Release
             os          : windows-latest
