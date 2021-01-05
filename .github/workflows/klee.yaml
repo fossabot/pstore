@@ -3,7 +3,7 @@ on:
     push:
         branches: [ master ]
 jobs:
-    KLEE Test:
+    klee-test:
         runs-on: ubuntu-latest
         container:
             image: klee/klee:2.1
