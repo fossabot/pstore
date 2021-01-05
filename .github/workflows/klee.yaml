@@ -8,8 +8,6 @@ jobs:
         container:
             image: klee/klee:2.1
             options: -u 0 --ulimit="stack=-1:-1"
-            volumes:
-                - ${{ github.workspace }}:/pstore
         steps:
             - uses: actions/checkout@v2
 
@@ -29,14 +27,16 @@ jobs:
               shell: bash
               working-directory: ${{ runner.workspace }}/build
               run: |
-                  cmake /pstore -G "Unix Makefiles"             \
-                                -D CMAKE_C_COMPILER=clang       \
-                                -D CMAKE_CXX_COMPILER=clang++   \
-                                -D CMAKE_BUILD_TYPE=Debug       \
-                                -D PSTORE_EXAMPLES=No           \
-                                -D PSTORE_EXCEPTIONS=No         \
-                                -D PSTORE_BITCODE=Yes           \
-                                -D PSTORE_DISABLE_UINT128_T=Yes
+                  echo $GITHUB_WORKSPACE
+                  set
+                  cmake $GITHUB_WORKSPACE -G "Unix Makefiles"             \
+                                          -D CMAKE_C_COMPILER=clang       \
+                                          -D CMAKE_CXX_COMPILER=clang++   \
+                                          -D CMAKE_BUILD_TYPE=Debug       \
+                                          -D PSTORE_EXAMPLES=No           \
+                                          -D PSTORE_EXCEPTIONS=No         \
+                                          -D PSTORE_BITCODE=Yes           \
+                                          -D PSTORE_DISABLE_UINT128_T=Yes
 
 
             - name: Build
