@@ -3,24 +3,13 @@ on:
     push:
         branches: [ master ]
 jobs:
-    job_id:
+    KLEE Test:
         runs-on: ubuntu-latest
         container:
             image: klee/klee:2.1
             options: -u 0 --ulimit="stack=-1:-1"
         steps:
             - uses: actions/checkout@v2
-
-            - name: Run in container
-              run: |
-                  echo This job does specify a container.
-                  echo It runs in the container instead of the VM.
-                  echo Hello > h.txt
-
-            - run: |
-                  echo This is the second run step.
-                  cat h.txt
-              name: Second step.
 
             - name: Create Build Environment
               run: cmake -E make_directory "${{ runner.workspace }}/build"
