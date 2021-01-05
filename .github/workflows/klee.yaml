@@ -26,10 +26,8 @@ jobs:
               run: cmake -E make_directory ${{ runner.workspace }}/build
 
             - name: Configure CMake
-              working-directory: ${{ runner.workspace }}/build
               run: |
-                  echo $GITHUB_WORKSPACE
-                  set
+                  cd "${{ runner.workspace }}/build"
                   cmake $GITHUB_WORKSPACE -G "Unix Makefiles"             \
                                           -D CMAKE_BUILD_TYPE=Debug       \
                                           -D CMAKE_CXX_COMPILER=clang++   \
