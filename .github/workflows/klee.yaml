@@ -1,4 +1,5 @@
 name: KLEE Test
+runs-on: ubuntu-latest
 on: [ push ]
 jobs:
     job_id:
