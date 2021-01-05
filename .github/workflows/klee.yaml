@@ -15,9 +15,11 @@ jobs:
               run: |
                   echo This job does specify a container.
                   echo It runs in the container instead of the VM.
+                  echo Hello > h.txt
 
             - run: |
                   echo This is the second run step.
+                  cat h.txt
               name: Second step.
 
             - name: Create Build Environment
@@ -29,16 +31,14 @@ jobs:
                   echo $GITHUB_WORKSPACE
                   set
                   cmake $GITHUB_WORKSPACE -G "Unix Makefiles"             \
-                                          -D CMAKE_C_COMPILER=clang       \
-                                          -D CMAKE_CXX_COMPILER=clang++   \
                                           -D CMAKE_BUILD_TYPE=Debug       \
-                                          -D PSTORE_EXAMPLES=No           \
-                                          -D PSTORE_EXCEPTIONS=No         \
+                                          -D CMAKE_CXX_COMPILER=clang++   \
+                                          -D CMAKE_C_COMPILER=clang       \
                                           -D PSTORE_BITCODE=Yes           \
-                                          -D PSTORE_DISABLE_UINT128_T=Yes
-
+                                          -D PSTORE_DISABLE_UINT128_T=Yes \
+                                          -D PSTORE_EXAMPLES=No           \
+                                          -D PSTORE_EXCEPTIONS=No
 
             - name: Build
               working-directory: ${{ runner.workspace }}/build
-              shell: bash
               run: cmake --build . --target pstore-klee-run-all
