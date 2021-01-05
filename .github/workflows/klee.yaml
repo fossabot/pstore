@@ -29,8 +29,7 @@ jobs:
               run: |
                   cd "${{ runner.workspace }}/build"
                   echo $GITHUB_WORKSPACE
-                  ls /github/workspace
-                  cmake /github/workspace -G "Unix Makefiles" -D CMAKE_BUILD_TYPE=Debug -D CMAKE_CXX_COMPILER=clang++ -D CMAKE_C_COMPILER=clang -D PSTORE_BITCODE=Yes -D PSTORE_DISABLE_UINT128_T=Yes -D PSTORE_EXAMPLES=No -D PSTORE_EXCEPTIONS=No
+                  cmake "$GITHUB_WORKSPACE" -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang -DPSTORE_BITCODE=Yes -DPSTORE_DISABLE_UINT128_T=Yes -DPSTORE_EXAMPLES=No -D PSTORE_EXCEPTIONS=No
 
             - name: Build
               working-directory: ${{ runner.workspace }}/build
