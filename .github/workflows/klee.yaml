@@ -1,8 +1,8 @@
 name: KLEE Test
-runs-on: ubuntu-latest
 on: [ push ]
 jobs:
     job_id:
+        runs-on: ubuntu-latest
         container:
             image: klee/klee:2.1
             options: --ulimit="stack=-1:-1"
