@@ -54,12 +54,6 @@ jobs:
             generator   : Unix Makefiles
             cxx_compiler: -DCMAKE_CXX_COMPILER=clang++-8 -DCMAKE_C_COMPILER=clang-8
 
-          - name        : Ubuntu-latest/clang-6/Release
-            os          : ubuntu-latest
-            build_type  : Release
-            generator   : Unix Makefiles
-            cxx_compiler: -DCMAKE_CXX_COMPILER=clang++-6 -DCMAKE_C_COMPILER=clang-6
-
           - name      : macOS-latest/Xcode/Debug
             os        : macos-latest
             build_type: Debug
