@@ -42,11 +42,11 @@ jobs:
             generator   : Unix Makefiles
             cxx_compiler: -DCMAKE_CXX_COMPILER=g++-7 -DCMAKE_C_COMPILER=gcc-7
 
-          - name        : Ubuntu-latest/clang-6/Release
+          - name        : Ubuntu-latest/clang-x/Release
             os          : ubuntu-latest
             build_type  : Release
             generator   : Unix Makefiles
-            cxx_compiler: -DCMAKE_CXX_COMPILER=clang++-6 -DCMAKE_C_COMPILER=clang-6
+            cxx_compiler: -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
 
           - name      : macOS-latest/Xcode/Debug
             os        : macos-latest
