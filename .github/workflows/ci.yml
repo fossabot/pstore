@@ -29,6 +29,7 @@ jobs:
             generator   : Unix Makefiles
             cxx_compiler: -DCMAKE_CXX_COMPILER=g++-10 -DCMAKE_C_COMPILER=gcc-10
 
+
           - name        : Ubuntu-latest/gcc-7.5/Debug
             os          : ubuntu-latest
             build_type  : Debug
@@ -42,17 +43,34 @@ jobs:
             generator   : Unix Makefiles
             cxx_compiler: -DCMAKE_CXX_COMPILER=g++-7 -DCMAKE_C_COMPILER=gcc-7
 
+
+          - name        : Ubuntu-latest/clang-9/Debug
+            os          : ubuntu-latest
+            build_type  : Debug
+            generator   : Unix Makefiles
+            cxx_compiler: -DCMAKE_CXX_COMPILER=clang++-9 -DCMAKE_C_COMPILER=clang-9
+            options     : '-DPSTORE_ALWAYS_SPANNING=Yes'
+
           - name        : Ubuntu-latest/clang-9/Release
             os          : ubuntu-latest
             build_type  : Release
             generator   : Unix Makefiles
             cxx_compiler: -DCMAKE_CXX_COMPILER=clang++-9 -DCMAKE_C_COMPILER=clang-9
 
+
+          - name        : Ubuntu-latest/clang-8/Debug
+            os          : ubuntu-latest
+            build_type  : Debug
+            generator   : Unix Makefiles
+            cxx_compiler: -DCMAKE_CXX_COMPILER=clang++-8 -DCMAKE_C_COMPILER=clang-8
+            options     : '-DPSTORE_ALWAYS_SPANNING=Yes'
+
           - name        : Ubuntu-latest/clang-8/Release
             os          : ubuntu-latest
             build_type  : Release
             generator   : Unix Makefiles
             cxx_compiler: -DCMAKE_CXX_COMPILER=clang++-8 -DCMAKE_C_COMPILER=clang-8
+
 
           - name      : macOS-latest/Xcode/Debug
             os        : macos-latest
