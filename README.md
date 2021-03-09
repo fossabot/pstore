@@ -6,6 +6,7 @@
 [![Coverity Scan Build Status](https://scan.coverity.com/projects/15170/badge.svg)](https://scan.coverity.com/projects/snsystems-pstore)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=SNSystems_pstore&metric=alert_status)](https://sonarcloud.io/dashboard?id=SNSystems_pstore)
 [![Language grade: C/C++](https://img.shields.io/lgtm/grade/cpp/g/SNSystems/pstore.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/SNSystems/pstore/context:cpp)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fpaulhuggett%2Fpstore.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fpaulhuggett%2Fpstore?ref=badge_shield)
 
 pstore is a lightweight persistent append-only key/value store intended for use as a back-end for the [LLVM Program Repository](https://github.com/SNSystems/llvm-project-prepo).
 
@@ -168,3 +169,7 @@ $ pstore-dump --log pstore.db
 ~~~~
 
 The [pstore-dump](tools/dump/) command allows us to inspect the innards of a pstore file. It produces a YAML dump of the requested structures: the transaction log in this case showing a list of all of the transactions in the file (newest first), how much data each of them is carrying, and when that data was committed. There is a small number of [other utilities in the tools/ directory](tools/) which allow various aspects of a pstore file to be explored.
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fpaulhuggett%2Fpstore.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fpaulhuggett%2Fpstore?ref=badge_large)
